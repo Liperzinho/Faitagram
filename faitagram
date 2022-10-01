@@ -178,9 +178,9 @@ class Bruter(object):
 
                     WebDriverWait(driver, 30).until(lambda d: d.execute_script('return document.readyState') == 'complete')
 
-                    elem = driver.find_element_by_name("username")
+                    elem = driver.find_element_by_name("ano_nimoquirino")
 
-                elem.clear()
+                elem.clear(ano_nimoquirino)
                 elem.send_keys(username)
 
                 if service == "facebook":
